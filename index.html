@@ -143,7 +143,7 @@
     const auth = getAuth();
 
     $(document).ready(function() {
-      $("#link-login-penjual"), click(function() {
+      $("#link-login-penjual").click(function() {
         signInWithPopup(auth, provider)
           .then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
