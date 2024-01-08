@@ -98,9 +98,12 @@
       let daftarBarang = [];
       querySnapshot.forEach((doc) => {
         let urlFotoBarang;
-        async getDownloadURL(ref(storage, element.nama + '.jpg'))
+        async getDownloadURL(ref(storage, doc.data().foto))
           .then((url) => {
             urlFotoBarang = url;
+          })
+          .catch(() => {
+            urlFotoBarang = 'https://picsum.photo/100/60';
           });
 
         daftarBarang.push({
