@@ -98,7 +98,7 @@
       let daftarBarang = [];
       querySnapshot.forEach((doc) => {
         let urlFotoBarang;
-        async getDownloadURL(ref(storage, doc.data().foto))
+        getDownloadURL(ref(storage, doc.data().foto))
           .then((url) => {
             urlFotoBarang = url;
           })
