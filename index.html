@@ -103,13 +103,14 @@
         if (namaFileFoto != "") {
           getDownloadURL(ref(storage, namaFileFoto))
           .then((url) => {
+            console.log(url);
             urlFotoBarang = url;
           })
           .catch(() => {
-            urlFotoBarang = 'https://picsum.photo/100/60';
+            urlFotoBarang = 'https://picsum.photos/100/60';
           });
         } else {
-          urlFotoBarang = 'https://picsum.photo/100/60';
+          urlFotoBarang = 'https://picsum.photos/100/60';
         }
         console.log(urlFotoBarang);
 
