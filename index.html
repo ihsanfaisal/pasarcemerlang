@@ -96,17 +96,18 @@
     async function ambilDaftarBarang() {
       const querySnapshot = await getDocs(collection(db, "barang"));
       let daftarBarang = [];
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(async (doc) => {
         let urlFotoBarang;
         let namaFileFoto = doc.data().foto;
 
         if (namaFileFoto != "") {
-          getDownloadURL(ref(storage, namaFileFoto))
+          await getDownloadURL(ref(storage, namaFileFoto))
           .then((url) => {
             console.log(url);
             urlFotoBarang = url;
           })
-          .catch(() => {
+          .catch((error) => {
+            console.log(error);
             urlFotoBarang = 'https://picsum.photos/100/60';
           });
         } else {
