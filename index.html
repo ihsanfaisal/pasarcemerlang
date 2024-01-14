@@ -98,14 +98,19 @@
       let daftarBarang = [];
       querySnapshot.forEach((doc) => {
         let urlFotoBarang;
-        console.log(doc.data());
-        // getDownloadURL(ref(storage, doc.data().foto))
-        //   .then((url) => {
-        //     urlFotoBarang = url;
-        //   })
-        //   .catch(() => {
-        //     urlFotoBarang = 'https://picsum.photo/100/60';
-        //   });
+        let namaFileFoto = doc.data().foto;
+
+        if (namaFileFoto != "") {
+          getDownloadURL(ref(storage, namaFileFoto))
+          .then((url) => {
+            urlFotoBarang = url;
+          })
+          .catch(() => {
+            urlFotoBarang = 'https://picsum.photo/100/60';
+          });
+        } else {
+          urlFotoBarang = 'https://picsum.photo/100/60';
+        }
 
         daftarBarang.push({
           id: doc.id,
