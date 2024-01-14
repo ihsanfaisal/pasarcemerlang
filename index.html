@@ -98,7 +98,7 @@
       let daftarBarang = [];
       querySnapshot.forEach(async (doc) => {
         let urlFotoBarang;
-        let namaFileFoto = doc.data().foto;
+        let namaFileFoto = await doc.data().foto;
 
         if (namaFileFoto != "") {
           await getDownloadURL(ref(storage, namaFileFoto))
@@ -113,7 +113,6 @@
         } else {
           urlFotoBarang = 'https://picsum.photos/100/60';
         }
-        console.log(urlFotoBarang);
 
         daftarBarang.push({
           id: doc.id,
