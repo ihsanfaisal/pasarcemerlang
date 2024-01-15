@@ -98,18 +98,15 @@
       let daftarBarang = [];
       querySnapshot.forEach((doc) => {
         let namaFileFoto = doc.data().foto;
-
-        if (namaFileFoto != "") {
+        
+        if (namaFileFoto != '') {
           getDownloadURL(ref(storage, namaFileFoto))
-          .then((url) => {
-            const img = document.getElementById(doc.id);
-            img.setAttribute('src', url);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then((urlFoto) => {
+              const foto = document.getElementById(doc.id);
+              foto.setAttribute('src', urlFoto);
+            })
         }
-
+        
         daftarBarang.push({
           id: doc.id,
           nama: doc.data().nama,
